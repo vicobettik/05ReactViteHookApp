@@ -1,17 +1,35 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const useFetch = (url) => {
+
+    const [state, setState] = useState(
+        {
+            data: null,
+            isLoading: true,
+            hasError: null,
+        }
+    );
+
     
     const getFectch = async () => {
-        const urlFetch = url;
-        console.log(urlFetch);
-        const options = {mode: 'cors'};
 
-        const resp = await fetch(url, options)
-        console.log(resp)
+        setState(
+            {
+                ...state,
+                isLoading: true
+            }
+        );
+
+        const resp = await fetch(url)
         const data = await resp.json();
-        
-        console.log(data);
+
+        setState(
+            {
+                data: data,
+                isLoading: false,
+                hasError: null
+            }
+        );
     }
 
     useEffect(() => {
@@ -19,5 +37,9 @@ export const useFetch = (url) => {
     }, [url]);
 
 
-  return{};
+  return {
+    data: state.data,
+    isLoading: state.isLoading,
+    hasError: state.hasError
+  }
 }
