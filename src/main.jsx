@@ -15,6 +15,8 @@ import { HooksApp } from './HooksApp'
 
 import './index.css'
 import { Padre } from './07-tareaMemo/Padre'
+import { TodoApp } from './08-useReducer/TodoApp'
+// import './08-useReducer/intro-reducer';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   //<React.StrictMode>
@@ -29,6 +31,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     // <Memorize />
     // <MemoHook />
     // <CallbackHook />
-    <Padre />
+    // <Padre />
+    <TodoApp />
   //</React.StrictMode>
 )
